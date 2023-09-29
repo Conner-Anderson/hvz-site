@@ -2,6 +2,15 @@ html {
     background-color: #f1f5f9;
     font-family: sans-serif;
   }
+
+html.dark {
+  background-color: #0d0950;
+  color: #f1f5f9;
+}
+
+.dark .nav-links a {
+  color: #f1f5f9;
+}
   
 body {
   margin: 0 auto;
