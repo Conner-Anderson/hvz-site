@@ -1,0 +1,76 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+const {
+
+  title = '',
+  subtitle = '',
+  tagline = '',
+  colOneItems = [],
+  colTwoItems = [],
+  colOneTitle = "",
+  colTwoTitle = "",
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<astro-fragment>
+  <style>
+    .center-container {
+      @apply flex justify-center items-center;
+    }
+
+    .container {
+      @apply flex flex-wrap ;
+    }
+
+    .column {
+      @apply w-full md:w-1/2 p-6 ;
+    }
+
+    #column-description {
+      @apply text-muted
+    }
+
+    #item-title {
+      @apply text-xl font-bold mt-6
+    }
+
+    #col-title {
+      @apply text-2xl text-center
+    }
+
+  </style>
+
+    <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+      <Headline title={title} subtitle={subtitle} tagline={tagline} />
+      <div class="center-container">
+        <div class="container">
+          <div class="column">
+            <h2 id="col-title">{colOneTitle}</h2>
+            {colOneItems.map(({title, description}) => (
+              
+              <h3 id="item-title">{title}</h3>
+              <p id="column-description">{description}</p>  
+              
+            ))}
+          </div>
+          <div class="column">
+            <h2 id="col-title">{colTwoTitle}</h2>
+            {colTwoItems.map(({title, description}) => (
+              
+              <h3 id="item-title">{title}</h3>
+              <p id="column-description">{description}</p>  
+              
+            ))}
+          </div>
+        </div>
+      </div>
+       
+    </WidgetWrapper>
+</astro-fragment>

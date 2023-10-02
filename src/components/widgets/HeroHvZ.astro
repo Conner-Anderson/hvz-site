@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '~/assets/images/hvzlogo.png';
+import hvzImage from '~/assets/images/webhvzsmall.jpg';
+---
+
+<style>
+    #hvz-hero {
+        height: 80vh;
+    }
+</style>
+
+<div class="relative overflow-hidden" id="hvz-hero">
+    <!-- First Image (image1) centered and scaled to fill the width -->
+    <div class="absolute inset-0 flex justify-center items-center">
+        <Image
+            class="w-screen h-full object-cover"
+            src={hvzImage}
+            alt='HvZ Hero Image'
+            loading="eager"
+        />
+    </div>
+    <!-- Second Image (Centered within image1) -->
+    <div class="absolute inset-0 flex justify-center items-center">
+        <div class="h-3/4 flex flex-col items-center justify-center">
+            <Image 
+                src={logoImage} 
+                alt='HvZ Logo' 
+                class="w-auto h-full object-contain" 
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 80vw"
+                loading="eager"
+            />
+        </div>
+    </div>
+</div>
